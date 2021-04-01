@@ -6,7 +6,17 @@ type Money int64
 // Category представляет собой категорию, в которой был совершён платёж ( авто, аптеки, рестораны и т.д.).
 type Category string
 
-//  Currency  представляет код валюты
+// Status представляет собой статус платежа
+type Status string
+
+// Предопределённые статусы платежей.
+const (
+	StatusOk Status = "OK"
+	StatusFail Status = "FAIL"
+	StatusInProgress Status = "INPROGRESS"
+)
+
+//  Currency  представляет код валюты.
 type Currency string 
 // Коды валют
  const (
@@ -15,10 +25,10 @@ type Currency string
   	USD Currency = "USD"
   )
 
-// PAN представляет номер карты
+// PAN представляет номер карты.
 type PAN string
 
-// Card представляет информацию о платёжной карте
+// Card представляет информацию о платёжной карте.
 type Card struct {
 	ID         int
 	PAN        PAN
@@ -34,6 +44,7 @@ type Payment struct {
 	ID      int
 	Amount  Money
 	Category Category
+	Status Status
 }
 type PaymentSourse struct {
 	Type        string //'card'
