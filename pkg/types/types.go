@@ -19,10 +19,21 @@ type PAN string
 //платёж(авто, аптеки, рестораны и т.д.)
 type Category string
 
+//Status представляет собойтстатус платежа.
+type Status string
+
+//Предопределённые статусы платежей
+const (
+	StatusOk Status = "OK"
+	StatusFail Status = "FAIL"
+	StatusInProgress Status = "INPROGRESS"
+)
+
 type Payment struct {
 	ID int
 	Amount Money
 	Category Category
+	Status Status
 }
 
 // Card представляет информацию о платёжной карте
